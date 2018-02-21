@@ -5,6 +5,14 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
-  title = 'app';
+  userName: string = "Ram";
+  selectedType: string = 'user';
+  userEmail: string = "krishram@gmail.com"
+
+  onNavigate(val: string) {
+    this.selectedType = val;
+  }
 }
+ 
