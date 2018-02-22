@@ -1,4 +1,4 @@
-export class User {
+export class UserInfo {
     constructor(
         public firstName: string, 
         public lastName:string, 
@@ -8,6 +8,7 @@ export class User {
         public mobile: number,
         public imagePath: string,
         public manager: string,
-        public location: string
+        public location: string,
+        public userGroups
     ) {}
 }
