@@ -1,3 +1,5 @@
+import { UserGroup } from "./user-group.model";
+
 export class UserInfo {
     constructor(
         public firstName: string, 
@@ -9,6 +11,6 @@ export class UserInfo {
         public imagePath: string,
         public manager: string,
         public location: string,
-        public userGroups
+        public userGroups: UserGroup[]
     ) {}
 }
