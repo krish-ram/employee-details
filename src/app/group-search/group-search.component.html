@@ -1,0 +1,14 @@
+<div class="col-xs-12">
+  <div class="col-xs-12">
+    <h4>Search for a group: </h4>
+    <div class="input-group">
+      <input auto-complete [(ngModel)]="term" [source]="groupLists" value-property-name="groupName" display-property-name="groupDesc"
+        no-match-found-text="Group doesn't exist" [list-formatter]="autocompleteList" (valueChanged)="myCallback($event)" />
+    </div>
+  </div>
+
+  <div class="col-xs-12">&nbsp;</div>
+  <div class="col-xs-12" *ngIf="groupSelected">
+    <router-outlet></router-outlet>
+  </div>
+</div>

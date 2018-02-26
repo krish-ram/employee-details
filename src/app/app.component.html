@@ -1,9 +1,8 @@
-<app-header name="{{userName}}" (typeSelected)="onNavigate($event)"></app-header>
+<app-header></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-user *ngIf="selectedType === 'user'" email="{{userEmail}}"></app-user>
-      <app-group *ngIf="selectedType !== 'user'"></app-group>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import { UserInfo } from "./user/user-info.model";
 import { UserGroup } from "./user/user-group.model";
-import { UserList } from "./user/user-list.model";
+import { UserList } from "./shared/user-list.model";
 
 export class UserDetailsService {
 
@@ -29,8 +29,8 @@ export class UserDetailsService {
       if (detail.email === email) {
         userDetail = detail;
       }
+      return detail;
     });
-    //delete userDetail['userGroups'];
     return userDetail;
   }
 
@@ -41,6 +41,7 @@ export class UserDetailsService {
         console.log(detail);
         userGroups = detail.userGroups;
       }
+      return detail;
     });
     return userGroups;
   }
@@ -52,6 +53,7 @@ export class UserDetailsService {
       user.userName = detail.firstName + ' ' + detail.lastName;
       user.userEmail = detail.email;
       userList.push(user);
+      return detail;
     });
     return userList;
   }

@@ -7,12 +7,5 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  userName: string = "Ram";
-  selectedType: string = 'user';
-  userEmail: string = "krishram@gmail.com"
 
-  onNavigate(val: string) {
-    this.selectedType = val;
-  }
 }
- 

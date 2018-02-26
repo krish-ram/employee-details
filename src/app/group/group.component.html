@@ -1,3 +1,54 @@
-<p>
-  group works!
-</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="col-xs-12">
+      <h3>{{groupInfo.groupName}}</h3>
+      <h5>{{groupInfo.groupDesc}}</h5>
+    </div>
+    <div class="col-xs-12">&nbsp;</div>
+    <div class="col-xs-6">Created By :
+      <strong> {{groupInfo.createdBy}}</strong>
+    </div>
+    <div class="col-xs-6">Created On :
+      <strong> {{groupInfo.createdOn}}</strong>
+    </div>
+    <div class="col-xs-12">&nbsp;</div>
+    <div class="col-xs-12">
+      <p-accordion>
+        <p-accordionTab header="Admin Details">
+          <div *ngFor="let admin of groupInfo.adminList">
+            <div class="col-xs-6">User:
+              <strong>{{admin.userName}}</strong>
+            </div>
+            <div class="col-xs-6">Email:
+              <strong>{{admin.userEmail}}</strong>
+            </div>
+          </div>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+    <hr class="col-xs-10" />
+    <div class="col-xs-12">&nbsp;</div>
+    <div class="col-xs-12">
+      <p-fieldset legend="Members">
+        <div class="col-xs-6">
+          <p-table [columns]="cols" [value]="groupInfo.memberList">
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns">
+                  {{col.header}}
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr>
+                <td *ngFor="let col of columns">
+                  {{rowData[col.field]}}
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </p-fieldset>
+    </div>
+  </div>
+</div>

@@ -1,18 +1,24 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-      <div class="navbar-header">
-          <a href="#" class="navbar-brand">Wissen Technology</a>
-      </div>
+    <div class="navbar-header">
+      <a href="#" class="navbar-brand">Wissen Technology</a>
+    </div>
 
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-            <li><a (click)="onSelect('user')" style="cursor: pointer">User Search</a></li>
-            <li><a (click)="onSelect('group')" style="cursor: pointer">Group Search</a></li>
-        </ul>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a [routerLink]="['user-search']" style="cursor: pointer">User Search</a>
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a [routerLink]="['group-search']" style="cursor: pointer">Group Search</a>
+        </li>
+      </ul>
 
-        <ul class="nav navbar-nav navbar-right">
-            <li><a>Welcome {{name}}</a></li> 
-        </ul>
-      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a>Welcome {{name}}</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
