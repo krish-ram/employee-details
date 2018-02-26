@@ -1,3 +1,5 @@
+An Employee Details application where we can search Employee and different groups of an organization.
+
 # EmployeeDetails
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0.
