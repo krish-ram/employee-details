@@ -2,13 +2,13 @@
   <div class="col-xs-12">
     <h4>Search an user: </h4>
     <div class="input-group">
-      <input auto-complete [(ngModel)]="term" [source]="userLists" value-property-name="userEmail" display-property-name="userName"
-        no-match-found-text="No User Found" [list-formatter]="autocompleteList" (valueChanged)="myCallback($event)" />
+      <input auto-complete [source]="userLists" value-property-name="userEmail" display-property-name="userName" no-match-found-text="No User Found"
+        [list-formatter]="autocompleteList" (valueChanged)="myCallback($event)" />
     </div>
   </div>
 
   <div class="col-xs-12">&nbsp;</div>
-  <div class="col-xs-12" *ngIf="userSelected">
+  <div class="col-xs-12">
     <router-outlet></router-outlet>
   </div>
 </div>

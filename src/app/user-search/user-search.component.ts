@@ -14,11 +14,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 export class UserSearchComponent implements OnInit {
 
-  term: string;
   userInfo: UserInfo;
   userGroups: UserGroup[];
   userLists: UserList[];
-  userSelected: boolean = false;
 
   constructor(private userSrvc: UserDetailsService, private router: Router, private route: ActivatedRoute) { }
 
@@ -28,7 +26,6 @@ export class UserSearchComponent implements OnInit {
 
   myCallback(val: any) {
     if (val && val.userEmail) {
-      this.userSelected = true;
       this.router.navigate(['user', val.userEmail], { relativeTo: this.route });
     }
   }

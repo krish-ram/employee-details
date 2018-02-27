@@ -1,26 +1,28 @@
 <div class="panel panel-default">
-    <div class="panel-body">
-        <div class="col-xs-12">
-            <div class="col-xs-6">
-                <h4>User Group Membership</h4><br />
-                <p-table [columns]="cols" [value]="groups">
-                    <ng-template pTemplate="header" let-columns>
-                        <tr>
-                            <th *ngFor="let col of columns">
-                                {{col.header}}
-                            </th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-rowData let-columns="columns">
-                        <tr>
-                            <td *ngFor="let col of columns">
-                                    {{rowData[col.field]}}
-                            </td>
-                        </tr>
-                    </ng-template>
-                </p-table>
-            </div>
-            <div class="col-xs-3">&nbsp;</div>
-        </div>
+  <div class="panel-body">
+    <div class="col-xs-12">
+      <div class="col-xs-6">
+        <h4>User Group Membership</h4>
+        <br />
+        <p-table [columns]="cols" [value]="groups">
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+              <td *ngFor="let col of columns">
+                <a style="cursor: pointer" [routerLink]="['/group-search/group/', rowData[col.field]]" *ngIf="col.field === 'groupName'">{{rowData[col.field]}}</a>
+                <span *ngIf="col.field === 'groupDesc'">{{rowData[col.field]}}</span>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+      <div class="col-xs-3">&nbsp;</div>
     </div>
+  </div>
 </div>

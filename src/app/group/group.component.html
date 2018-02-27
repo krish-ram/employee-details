@@ -20,7 +20,9 @@
               <strong>{{admin.userName}}</strong>
             </div>
             <div class="col-xs-6">Email:
-              <strong>{{admin.userEmail}}</strong>
+              <strong>
+                <a style="cursor: pointer" [routerLink]="['/user-search/user/', admin.userEmail]">{{admin.userEmail}}</a>
+              </strong>
             </div>
           </div>
         </p-accordionTab>
@@ -42,7 +44,10 @@
             <ng-template pTemplate="body" let-rowData let-columns="columns">
               <tr>
                 <td *ngFor="let col of columns">
-                  {{rowData[col.field]}}
+                  <span *ngIf="col.field === 'userName'">{{rowData[col.field]}}</span>
+
+                  <a style="cursor: pointer" [routerLink]="['/user-search/user/', rowData[col.field]]" *ngIf="col.field === 'userEmail'">{{rowData[col.field]}}</a>
+                  <span *ngIf="col.field === 'userEmail' && editDetails" (click)="removeMemberFromList(rowData[col.field])" class="glyphicon-trash pull-right"></span>
                 </td>
               </tr>
             </ng-template>

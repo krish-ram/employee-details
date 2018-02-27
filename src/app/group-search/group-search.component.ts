@@ -11,9 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 export class GroupSearchComponent implements OnInit {
 
-  term: string;
   groupLists: GroupInfo[];
-  groupSelected: boolean;
   constructor(private groupSrvc: GroupDetailsService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
@@ -26,7 +24,6 @@ export class GroupSearchComponent implements OnInit {
 
   myCallback(val: any) {
     if (val && val.groupName) {
-      this.groupSelected = true;
       this.router.navigate(['group', val.groupName], { relativeTo: this.route });
     }
 

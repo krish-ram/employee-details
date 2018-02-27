@@ -31,5 +31,21 @@ export class GroupDetailsService {
         return groupData;
     }
 
+    removeMember = function (email: string, groupName: string) {
+        let memberData: UserList[];
+        this.groupDetails.map((detail) => {
+            if (detail.groupName === groupName) {
+                detail.memberList = detail.memberList.filter((member) => {
+                    if (member.userEmail != email) {
+                        return member;
+                    }
+                });
+                memberData = detail.memberList;
+            }
+            return detail;
+        });
+        return memberData;
+    }
+
 
 }

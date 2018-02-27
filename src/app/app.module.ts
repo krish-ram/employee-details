@@ -21,6 +21,7 @@ import { GroupComponent } from './group/group.component';
 import { GroupSearchComponent } from './group-search/group-search.component';
 import { GroupDetailsService } from './group-details.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     FieldsetModule,
     BrowserAnimationsModule
   ],
-  providers: [UserDetailsService, GroupDetailsService],
+  providers: [UserDetailsService, GroupDetailsService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
