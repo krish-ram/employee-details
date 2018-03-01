@@ -20,10 +20,12 @@ export class GroupComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.groupInfo = this.groupSrvc.getGroupDetail(params.name);
       this.editDetails = false;
-      this.groupInfo.adminList.some((admin) => {
-        if (admin.userEmail == this.auth.getLogIn().userEmail) {
-          this.editDetails = true;
-        }
+      this.groupInfo.adminList.map((admin) => {
+        this.auth.getLogIn().subscribe((user: any) => {
+          if (admin.userEmail == user.userEmail) {
+            this.editDetails = true;
+          }
+        })
       });
     });
 
@@ -31,12 +33,6 @@ export class GroupComponent implements OnInit {
       { field: 'userName', header: "Member Name" },
       { field: 'userEmail', header: "Member E-Mail ID" }
     ];
-
-    this.groupInfo.adminList.some((admin) => {
-      if (admin.userEmail == this.auth.getLogIn().userEmail) {
-        this.editDetails = true;
-      }
-    });
   }
 
   removeMemberFromList(email: string) {

@@ -17,10 +17,6 @@ export class UserComponent implements OnInit {
   constructor(private route: ActivatedRoute, private userSrvc: UserDetailsService) { }
 
   ngOnInit() {
-    console.log(this.route.snapshot.params['email']);
-    this.userInfo = this.userSrvc.getUserDetail(this.route.snapshot.params['email']);
-    this.userGroups = this.userInfo.userGroups;
-
     this.route.params.subscribe((params: Params) => {
       this.userInfo = this.userSrvc.getUserDetail(params.email);
       this.userGroups = this.userInfo.userGroups;

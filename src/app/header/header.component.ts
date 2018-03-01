@@ -17,7 +17,12 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.name = this.auth.getLogIn().userName;
+    this.auth.getLogIn().subscribe((user: any) => {
+      console.log(user);
+      if (user && user.userName) {
+        this.name = user.userName;
+      }
+    });
   }
 
 }

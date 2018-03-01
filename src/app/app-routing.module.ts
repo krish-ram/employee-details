@@ -7,8 +7,10 @@ import { UserSearchComponent } from './user-search/user-search.component';
 import { GroupComponent } from './group/group.component';
 import { GroupSearchComponent } from './group-search/group-search.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
+    { path: 'login', component: LoginComponent, },
     { path: '', redirectTo: '/user-search', pathMatch: 'full' },
     {
         path: 'user-search', component: UserSearchComponent,

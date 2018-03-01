@@ -22,6 +22,7 @@ import { GroupSearchComponent } from './group-search/group-search.component';
 import { GroupDetailsService } from './group-details.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { AuthService } from './auth.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AuthService } from './auth.service';
     UserGroupComponent,
     ErrorPageComponent,
     UserSearchComponent,
-    GroupSearchComponent
+    GroupSearchComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
