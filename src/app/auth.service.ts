@@ -2,24 +2,25 @@ import { UserList } from "./shared/user-list.model";
 import { Injectable } from "@angular/core";
 import { UserDetailsService } from "./user-details.service";
 import { Observable } from "rxjs/Observable";
+import { SharedService } from "./shared/shared.service";
 
 @Injectable()
 export class AuthService {
-    constructor(private userDetails: UserDetailsService) { };
+    constructor(private userDetails: UserDetailsService, private sharedSrvc: SharedService) { };
 
     private loggedInUser: UserList;
 
-    getLogIn(): Observable<UserList> {
+    getLogIn() {
 
-        return Observable.create(observer => {
-            if (this.loggedInUser && this.loggedInUser.userEmail) {
-                observer.next(this.loggedInUser);
-                observer.complete();
-            } else {
-                observer.next({});
-                observer.complete();
-            }
-        });
+        if (this.loggedInUser && this.loggedInUser.userEmail) {
+            this.sharedSrvc.loggedInUser.next(this.loggedInUser);
+        }
+
+    }
+
+
+    login() {
+
     }
 
     logout() {
