@@ -30,7 +30,8 @@ export class AuthService {
     checkUserLogin(userName: string, pwd: string) {
         let userDetail = this.userDetails.getUserDetail(userName);
         if (userDetail && userDetail.email) {
-            this.loggedInUser = new UserList(userDetail.firstName + userDetail.lastName, userDetail.email);
+            this.loggedInUser = new UserList(userDetail.firstName + " " + userDetail.lastName, userDetail.email);
+            this.sharedSrvc.setLoggedInUser(this.loggedInUser)
             return true;
         }
         return false;

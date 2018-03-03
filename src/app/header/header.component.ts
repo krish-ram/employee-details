@@ -21,11 +21,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.sub = this.sharedSrvc.getLoggedInUser().subscribe((user: any) => {
-      console.log(22, user, user.name);
-      if (user && user.userName) {
-        console.log(11, user, user.name);
+      if (user && user.userName)
         this.name = user.userName;
-      }
     });
   }
 
