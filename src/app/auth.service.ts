@@ -13,7 +13,7 @@ export class AuthService {
     getLogIn() {
 
         if (this.loggedInUser && this.loggedInUser.userEmail) {
-            this.sharedSrvc.loggedInUser.next(this.loggedInUser);
+            this.sharedSrvc.setLoggedInUser(this.loggedInUser);
         }
 
     }

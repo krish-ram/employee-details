@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { SharedService } from '../shared/shared.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-header',
@@ -10,19 +12,22 @@ export class HeaderComponent implements OnInit {
 
   @Output() typeSelected = new EventEmitter<string>();
   name: string;
-  constructor(private auth: AuthService) { };
+  sub: Subscription;
+  constructor(private auth: AuthService, private sharedSrvc: SharedService) { };
 
   onSelect(searchType: string) {
     this.typeSelected.emit(searchType);
   }
 
   ngOnInit() {
-    this.auth.getLogIn().subscribe((user: any) => {
-      console.log(user);
+    this.sub = this.sharedSrvc.getLoggedInUser().subscribe((user: any) => {
+      console.log(22, user, user.name);
       if (user && user.userName) {
+        console.log(11, user, user.name);
         this.name = user.userName;
       }
     });
   }
+
 
 }

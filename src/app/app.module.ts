@@ -23,6 +23,7 @@ import { GroupDetailsService } from './group-details.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './login/login.component';
+import { SharedService } from './shared/shared.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { LoginComponent } from './login/login.component';
     FieldsetModule,
     BrowserAnimationsModule
   ],
-  providers: [UserDetailsService, GroupDetailsService, AuthService],
+  providers: [UserDetailsService, GroupDetailsService, AuthService, SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

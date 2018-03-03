@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GroupDetailsService } from '../group-details.service';
 import { GroupInfo } from './group-info.model';
 import { AuthService } from '../auth.service';
+import { SharedService } from '../shared/shared.service';
 
 @Component({
   selector: 'app-group',
@@ -14,16 +15,18 @@ export class GroupComponent implements OnInit {
   editDetails: boolean = false;
   groupInfo: GroupInfo;
   cols: any;
-  constructor(private route: ActivatedRoute, private groupSrvc: GroupDetailsService, private auth: AuthService) { }
+  constructor(private route: ActivatedRoute, private groupSrvc: GroupDetailsService, private auth: AuthService, private sharedSrvc: SharedService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.groupInfo = this.groupSrvc.getGroupDetail(params.name);
       this.editDetails = false;
       this.groupInfo.adminList.map((admin) => {
-        this.auth.getLogIn().subscribe((user: any) => {
-          if (admin.userEmail == user.userEmail) {
-            this.editDetails = true;
+        this.sharedSrvc.getLoggedInUser().subscribe((user: any) => {
+          if (user && user.userEmail) {
+            if (admin.userEmail == user.userEmail) {
+              this.editDetails = true;
+            }
           }
         })
       });
