@@ -24,6 +24,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { AuthService } from './auth.service';
 import { LoginComponent } from './login/login.component';
 import { SharedService } from './shared/shared.service';
+import { AuthGuard } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { SharedService } from './shared/shared.service';
     FieldsetModule,
     BrowserAnimationsModule
   ],
-  providers: [UserDetailsService, GroupDetailsService, AuthService, SharedService],
+  providers: [UserDetailsService, GroupDetailsService, AuthService, SharedService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,18 +8,19 @@ import { GroupComponent } from './group/group.component';
 import { GroupSearchComponent } from './group-search/group-search.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth-guard.service';
 
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent, },
-    { path: '', redirectTo: '/user-search', pathMatch: 'full' },
+    { path: '', redirectTo: '/user-search', pathMatch: 'full', canActivate: [AuthGuard] },
     {
-        path: 'user-search', component: UserSearchComponent,
+        path: 'user-search', component: UserSearchComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
         children: [
             { path: 'user/:email', component: UserComponent }
         ]
     },
     {
-        path: 'group-search', component: GroupSearchComponent,
+        path: 'group-search', component: GroupSearchComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard],
         children: [
             { path: 'group/:name', component: GroupComponent }
         ]

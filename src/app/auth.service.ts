@@ -18,6 +18,20 @@ export class AuthService {
 
     }
 
+    isAuthenticated() {
+        const promise = new Promise(
+            (resolve, reject) => {
+                setTimeout(() => {
+                    if (this.loggedInUser && this.loggedInUser.userEmail)
+                        resolve(true);
+                    else
+                        resolve(false);
+                }, 800);
+            }
+        );
+        return promise;
+    }
+
 
     login() {
 

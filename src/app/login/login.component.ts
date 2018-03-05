@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +10,17 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   invalidUser: boolean = false;
-  constructor(private auth: AuthService, private router: Router) { }
+  returnUrl: string = '';
+  constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.queryParams
+      .subscribe(params => this.returnUrl = params['return'] || '/user-search');
   }
 
   loginUser(uName: string, pwd: string) {
     if (this.auth.checkUserLogin(uName, pwd)) {
-      this.router.navigate(['/user-search']);
+      this.router.navigateByUrl(this.returnUrl);
     } else {
       this.invalidUser = true;
     }
