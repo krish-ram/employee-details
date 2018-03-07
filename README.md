@@ -1,4 +1,4 @@
-An Employee Details application where we can search Employee and different groups of an organization.
+An Employee Details application where we can search Employee details and different groups of an organization.
 
 # EmployeeDetails
 
